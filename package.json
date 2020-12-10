@@ -1,0 +1,31 @@
+{
+  "name": "tropicali",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BethThayne/tropicali.git"
+  },
+  "author": "Beth Thayne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BethThayne/tropicali/issues"
+  },
+  "homepage": "https://github.com/BethThayne/tropicali#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "node-sass": "^5.0.0"
+  },
+  "dependencies": {
+    "gulp-dart-sass": "^1.0.2"
+  }
+}
