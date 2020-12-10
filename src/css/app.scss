@@ -1,12 +1,16 @@
 @import "reset";
 @import "typography";
 
-$primary-color: #f70201;
+$primary-color:#f70201;
 $body-font: "Jost";
 $body-size: 24px;
 $mq-large: 800px;
 $mq-medium: 600px;
 
+
+@mixin drop-shadow() {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
 @mixin mq($width) {
     @media (max-width: $width) {

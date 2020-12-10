@@ -17,6 +17,15 @@
   },
   "homepage": "https://github.com/BethThayne/tropicali#readme",
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "browser-sync": "^2.26.13",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "node-sass": "^5.0.0"
+  },
+  "dependencies": {
+    "gulp-dart-sass": "^1.0.2"
   }
 }
