@@ -1,20 +1,37 @@
 const gulp = require('gulp')
-const sass = require('gulp-sass')
+
 const cleanCss = require('gulp-clean-css')
+const postcss = require('gulp-postcss')
+const concat = require('gulp-concat')
+
 const sourcemaps = require('gulp-sourcemaps')
 const imagemin = require('gulp-imagemin')
 
 const browserSync = require('browser-sync').create()
 
-sass.compiler = require('node-sass')
 
 // Compiles CSS
-gulp.task("sass", function () {
+gulp.task("css", function () {
+
     // Inital sass file to grab for compile
-    return gulp.src("src/css/app.scss")
+    return gulp.src([
+        "src/css/reset.css",
+        "src/css/typography.css",
+        "src/css/app.css"
+    ])
         .pipe(sourcemaps.init())
-        .pipe(sass())
+        .pipe( 
+            postcss([ 
+                require('postcss-preset-env')({
+                    stage: 1, 
+                    browsers: ["IE 11", "last 2 versions"]
+                }), 
+                require('autoprefixer') 
+                    ]) 
+            )
         // Creates minifed CSS file with ie8 compatible syntax
+        .pipe(concat("app.css"))
+
         .pipe(
             cleanCss({
                 compatibility: 'ie8'
@@ -67,11 +84,11 @@ gulp.task("watch", function () {
     // If images folder is updated then reruns fonts task and move files to dist folder
     gulp.watch("src/img/*", gulp.series("images"))
     // If "scss" is updated then reruns sass compiler and move compile files to dist folder
-    gulp.watch("src/css/*.scss", gulp.series("sass"))
+    gulp.watch("src/css/*.css", gulp.series("css"))
 })
 
 // Runs all the following tasks on "gulp" command
-const build = gulp.series(["html", "sass", "fonts", "images", "watch"])
+const build = gulp.series(["html", "css", "fonts", "images", "watch"])
 gulp.task('default', build)
 
 
